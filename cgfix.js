@@ -1,11 +1,16 @@
 // CGFix.js - https://github.com/isaacchua/cgfix
-mr = (function (mr, $, window, document){
+let cgfix = {
+    removeBlankLines: true
+};
+mr = (function (mr, $, window, document, cgfix){
     "use strict";
 
-    // remove "all-page-modals"
-    mr.components.documentReady.push(function(){
-        $(".all-page-modals").remove();
-    });
+    // remove blank lines ("all-page-modals")
+    if (cgfix.removeBlankLines) {
+        mr.components.documentReady.push(function(){
+            $(".all-page-modals").remove();
+        });
+    }
 
     // fix dynamic gallery
     let masonry = $(".masonry");
@@ -42,4 +47,4 @@ mr = (function (mr, $, window, document){
     }
 
     return mr;
-}(mr, jQuery, window, document));
+}(mr, jQuery, window, document, cgfix));
