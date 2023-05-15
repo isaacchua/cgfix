@@ -57,6 +57,11 @@ You will also need to specify the `data-sort-alt` attribute on the `<div class="
 <div class="masonry" data-sort-alt="asc">
 ```
 
+## Versions
+
+### v1.0.0 (2023-05-15)
+- First release.
+
 ## License
 
 [MIT](https://github.com/isaacchua/cgfix/blob/master/LICENSE)
