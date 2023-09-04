@@ -2,7 +2,12 @@
 let cgfix = {
     removeBlankLines: true,
     galleryEnableHideFilter: true,
-    galleryEnableSortByAltName: true
+    galleryEnableSortByAltName: true,
+    loginEnable: true,
+    loginLinkText: "Login",
+    loginGroupId: "mygroup",
+    loginCheckLoggedInPage: "logged-in",
+    loginRedirectPage: null
 };
 mr = (function (mr, $, window, document, cgfix){
     "use strict";
