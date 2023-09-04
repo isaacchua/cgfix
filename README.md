@@ -11,6 +11,8 @@ A JavaScript module to fix issues that arise on CampusGroups group websites.
     - Delete filtered-out hidden images.
     - Sort images by alt name (based on the file name by default) instead of CampusGroups own default sorting by upload date.
 
+3. Add login link to navigation bars if user is not logged in.
+
 ## Installation
 
 1. Click on the **Website Settings** button on your group's website admin panel.
@@ -29,7 +31,12 @@ CGFix.js is configured in the `cgfix` object at the start of the code:
 let cgfix = {
     removeBlankLines: true,
     galleryEnableHideFilter: true,
-    galleryEnableSortByAltName: true
+    galleryEnableSortByAltName: true,
+    loginEnable: true,
+    loginLinkText: "Login",
+    loginGroupId: "mygroup",
+    loginCheckLoggedInPage: "logged-in",
+    loginRedirectPage: null
 };
 ```
 
@@ -57,7 +64,33 @@ You will also need to specify the `data-sort-alt` attribute on the `<div class="
 <div class="masonry" data-sort-alt="asc">
 ```
 
+### Login link
+
+Set `loginEnable` to `true` if you want CGFix.js to add a login link to the navigation bars if the user is not logged in. Set `loginGroupId` to your group's URL ID, which is the part of your website's URL marked `[groupId]`:
+
+```
+https://[schoolId].campusgroups.com/[groupId]/[pageId]/
+```
+
+You will also need to create a webpage on your group's website. It can be named "Logged In" or any other name. The important thing is to configure it:
+
+- Ensure that the webpage's **Publish** checkbox is selected.
+- Under the webpage's **Settings**:
+    - Copy the **URL name** and set `loginCheckLoggedInPage` to that URL name.
+    - Set a **Redirect url** to your group's home page — e.g., `/[groupId]/home/`. (optional)
+- Under the webpage's **Access rights**:
+    - Set **This content is accessible to:** to your school's users only. Typically, this is the second option.
+
+CGFix.js will use the presence of this "Logged In" page to determine whether the user is logged in. After checking, CGFix.js will remove the link to the "Logged In" page from the navigation bars so that logged-in users will not see it.
+
+Use `loginLinkText` to set the text of the login link.
+
+You may also specify a `loginRedirectPage`. This refers to the **URL name** of the page to redirect the user to after they log in. It could be a members' page for instance. Delete it or leave it as `null` if you want to redirect the user to your group's home page.
+
 ## Versions
+
+### v1.1.0 (2023-09-03)
+- Added login link feature.
 
 ### v1.0.0 (2023-05-15)
 - First release.
