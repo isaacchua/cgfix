@@ -1,4 +1,4 @@
-// CGFix.js v1.1.0 (2023-09-04) - https://github.com/isaacchua/cgfix
+// CGFix.js v1.2.0 (2023-09-27) - https://github.com/isaacchua/cgfix
 let cgfix = {
     removeBlankLines: true,
     galleryEnableHideFilter: true,
