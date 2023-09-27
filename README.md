@@ -17,6 +17,8 @@ Also contains CSS fixes under [css/](css/).
 
 4. Restore the missing navigation hamburger if the _Edit HTML (advanced)_ feature is used. This happens because the hamburger icon uses the modern `<i class="icon ..."></i>` convention today, which repurposes the italics HTML tag without any content therein. This causes the archaic editor to detect an empty tag and replace the entire `<i>` and the `<a>` around it with a `&nbsp;`. This fix replaces the content within the elements of the given selector with the supplied HTML.
 
+5. Empty the content in icon tags. One way to get around the _Edit HTML (advanced)_ editor bug when using icon tags is to insert some arbitrary content like a `&nbsp;` in between the `<i>` tags. This feature removes the arbitrary content from all icon tags, which will restore any layout issues arising from arbitrary content.
+
 ## Installation
 
 1. Click on the **Website Settings** button on your group's website admin panel.
@@ -43,7 +45,8 @@ let cgfix = {
     loginRedirectPage: null,
     restoreMobileNav: true,
     restoreMobileNavSelector: ".col-xs-9.col-sm-10.text-right",
-    restoreMobileNavHtml: '<a href="#" class="hamburger-toggle" ...'
+    restoreMobileNavHtml: '<a href="#" class="hamburger-toggle" ...',
+    emptyIconTags: true
 };
 ```
 
@@ -100,10 +103,15 @@ Set `restoreMobileNav` to `true` if you want CGFix.js to restore missing the mob
 
 Use `restoreMobileNavSelector` to specify the jQuery selector to retrieve the correct tag(s) to restore the navigation hamburger to. And use `restoreMobileNavHtml` to specify the HTML to restore.
 
+### Empty content in icon tags
+
+Set `emptyIconTags` to `true` if you want CGFix.js to remove all content in `<i class="icon"></i>` tags.
+
 ## Versions
 
 ### v1.2.0 (2023-09-27)
 - Added restore mobile navigation hamburger feature.
+- Added empty content in icon tags feature.
 
 ### v1.1.0 (2023-09-03)
 - Added login link feature.

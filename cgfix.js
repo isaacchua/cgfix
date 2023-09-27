@@ -10,7 +10,8 @@ let cgfix = {
     loginRedirectPage: null,
     restoreMobileNav: true,
     restoreMobileNavSelector: ".col-xs-9.col-sm-10.text-right",
-    restoreMobileNavHtml: '<a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"><i class="icon icon--sm stack-interface stack-menu"></i></a>'
+    restoreMobileNavHtml: '<a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"><i class="icon icon--sm stack-interface stack-menu"></i></a>',
+    emptyIconTags: true
 };
 mr = (function (mr, $, window, document, cgfix){
     "use strict";
@@ -91,6 +92,13 @@ mr = (function (mr, $, window, document, cgfix){
     if (cgfix.restoreMobileNav) {
         mr.components.documentReady.push(function() {
             $(cgfix.restoreMobileNavSelector).html(cgfix.restoreMobileNavHtml);
+        });
+    }
+
+    // empty content in icon tags
+    if (cgfix.emptyIconTags) {
+        mr.components.documentReady.push(function() {
+            $("i.icon").empty();
         });
     }
 
