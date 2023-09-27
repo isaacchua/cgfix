@@ -15,6 +15,8 @@ Also contains CSS fixes under [css/](css/).
 
 3. Add login link to navigation bars if user is not logged in.
 
+4. Restore the missing navigation hamburger if the _Edit HTML (advanced)_ feature is used. This happens because the hamburger icon uses the modern `<i class="icon ..."></i>` convention today, which repurposes the italics HTML tag without any content therein. This causes the archaic editor to detect an empty tag and replace the entire `<i>` and the `<a>` around it with a `&nbsp;`. This fix replaces the content within the elements of the given selector with the supplied HTML.
+
 ## Installation
 
 1. Click on the **Website Settings** button on your group's website admin panel.
@@ -38,7 +40,10 @@ let cgfix = {
     loginLinkText: "Login",
     loginGroupId: "mygroup",
     loginCheckLoggedInPage: "logged-in",
-    loginRedirectPage: null
+    loginRedirectPage: null,
+    restoreMobileNav: true,
+    restoreMobileNavSelector: ".col-xs-9.col-sm-10.text-right",
+    restoreMobileNavHtml: '<a href="#" class="hamburger-toggle" ...'
 };
 ```
 
@@ -89,7 +94,16 @@ Use `loginLinkText` to set the text of the login link.
 
 You may also specify a `loginRedirectPage`. This refers to the **URL name** of the page to redirect the user to after they log in. It could be a members' page for instance. Delete it or leave it as `null` if you want to redirect the user to your group's home page.
 
+### Restore mobile navigation hamburger
+
+Set `restoreMobileNav` to `true` if you want CGFix.js to restore missing the mobile navigation hamburger arising from the _Edit HTML (advanced)_ feature.
+
+Use `restoreMobileNavSelector` to specify the jQuery selector to retrieve the correct tag(s) to restore the navigation hamburger to. And use `restoreMobileNavHtml` to specify the HTML to restore.
+
 ## Versions
+
+### v1.2.0 (2023-09-27)
+- Added restore mobile navigation hamburger feature.
 
 ### v1.1.0 (2023-09-03)
 - Added login link feature.

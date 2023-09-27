@@ -7,7 +7,10 @@ let cgfix = {
     loginLinkText: "Login",
     loginGroupId: "mygroup",
     loginCheckLoggedInPage: "logged-in",
-    loginRedirectPage: null
+    loginRedirectPage: null,
+    restoreMobileNav: true,
+    restoreMobileNavSelector: ".col-xs-9.col-sm-10.text-right",
+    restoreMobileNavHtml: '<a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"><i class="icon icon--sm stack-interface stack-menu"></i></a>'
 };
 mr = (function (mr, $, window, document, cgfix){
     "use strict";
@@ -81,6 +84,13 @@ mr = (function (mr, $, window, document, cgfix){
             let links = loggedInCheck.add("a[href='/".concat(cgfix.loginGroupId, "//']")).add("a[href='[CONTENT-FOOTER_MENU_URL]']");
             let listItems = links.parent("li").add(links.parent("span").parent("li"));
             listItems.remove();
+        });
+    }
+
+    // restore mobile nav hamburger
+    if (cgfix.restoreMobileNav) {
+        mr.components.documentReady.push(function() {
+            $(cgfix.restoreMobileNavSelector).html(cgfix.restoreMobileNavHtml);
         });
     }
 
