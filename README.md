@@ -46,6 +46,9 @@ let cgfix = {
     restoreMobileNav: true,
     restoreMobileNavSelector: ".col-xs-9.col-sm-10.text-right",
     restoreMobileNavHtml: '<a href="#" class="hamburger-toggle" ...',
+    restoreMobileNavAnchorSelector: ".hamburger-toggle",
+    restoreMobileNavMenuSelector: "nav",
+    restoreMobileNavMenuToggleClass: ["hidden-xs", "hidden-sm"],
     emptyIconTags: true
 };
 ```
@@ -103,11 +106,16 @@ Set `restoreMobileNav` to `true` if you want CGFix.js to restore missing the mob
 
 Use `restoreMobileNavSelector` to specify the jQuery selector to retrieve the correct tag(s) to restore the navigation hamburger to. And use `restoreMobileNavHtml` to specify the HTML to restore.
 
+Thereafter, set `restoreMobileNavAnchorSelector` to the jQuery selector for the anchor(s) to bind the toggle event. Set `restoreMobileNavMenuSelector` to the jQuery selector for the navigation menu. And set `restoreMobileNavMenuToggleClass` to a class or an array of classes to toggle on the navigation menu.
+
 ### Empty content in icon tags
 
 Set `emptyIconTags` to `true` if you want CGFix.js to remove all content in `<i class="icon"></i>` tags.
 
 ## Versions
+
+### v1.2.1 (2023-09-27)
+- Applied patch to add event handling to the mobile navigation hamburger.
 
 ### v1.2.0 (2023-09-27)
 - Added restore mobile navigation hamburger feature.

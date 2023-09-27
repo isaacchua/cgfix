@@ -1,4 +1,4 @@
-// CGFix.js v1.2.0 (2023-09-27) - https://github.com/isaacchua/cgfix
+// CGFix.js v1.2.1 (2023-09-27) - https://github.com/isaacchua/cgfix
 let cgfix = {
     removeBlankLines: true,
     galleryEnableHideFilter: true,
@@ -10,7 +10,10 @@ let cgfix = {
     loginRedirectPage: null,
     restoreMobileNav: true,
     restoreMobileNavSelector: ".col-xs-9.col-sm-10.text-right",
-    restoreMobileNavHtml: '<a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"><i class="icon icon--sm stack-interface stack-menu"></i></a>',
+    restoreMobileNavHtml: '<a href="#" class="hamburger-toggle"><i class="icon icon--sm stack-interface stack-menu"></i></a>',
+    restoreMobileNavAnchorSelector: ".hamburger-toggle",
+    restoreMobileNavMenuSelector: "nav",
+    restoreMobileNavMenuToggleClass: ["hidden-xs", "hidden-sm"],
     emptyIconTags: true
 };
 mr = (function (mr, $, window, document, cgfix){
@@ -92,6 +95,9 @@ mr = (function (mr, $, window, document, cgfix){
     if (cgfix.restoreMobileNav) {
         mr.components.documentReady.push(function() {
             $(cgfix.restoreMobileNavSelector).html(cgfix.restoreMobileNavHtml);
+            $(cgfix.restoreMobileNavAnchorSelector).on("click", function() {
+                $(cgfix.restoreMobileNavMenuSelector).toggleClass(cgfix.restoreMobileNavMenuToggleClass);
+            });
         });
     }
 
