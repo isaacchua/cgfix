@@ -2,6 +2,8 @@
 
 A JavaScript module to fix issues that arise on CampusGroups group websites.
 
+Also contains CSS fixes under [css/](css/).
+
 ## Features
 
 1. Remove blank lines (`all-page-modals`). These are basically spacings that CampusGroups automatically adds to the page after every edit on the Website Builder. This causes certain sections to increasingly get longer with more whitespace over time. Absolutely essential if the page gets many edits.
