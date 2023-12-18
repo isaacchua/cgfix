@@ -9,14 +9,22 @@ th {
 }
 
 .ts-stack a,
-.cgLead a {
-    color: #2173d0 !important;
-    text-decoration: underline !important;
+.cgLead a,
+.ts-stack ul li > a,
+.cgLead ul li > a {
+    color: #2173d0;
+    text-decoration: underline;
 }
 
 .ts-stack a:hover,
-.cgLead a:hover {
-    color: #809aae !important;
+.cgLead a:hover,
+.ts-stack ul li > a:hover,
+.cgLead ul li > a:hover {
+    color: #809aae;
+}
+
+a.icon {
+    text-decoration: none;
 }
 
 .ts-stack .lead,
