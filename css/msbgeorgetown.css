@@ -1,6 +1,6 @@
 /*
 For: msbgeorgetown.campusgroups.com
-Version: v1.0.0 (2023-09-27)
+Version: v1.1.0 (2023-12-18)
 Source: https://github.com/isaacchua/cgfix
 */
 
@@ -25,6 +25,13 @@ th {
 .cgLead>ul,
 .lead {
     color: #484848 !important;
+}
+
+.section-cont__content-officers .h5,
+.section-cont__content-officers--small .h5,
+.section-cont__content-officers--medium .h5,
+.section-cont__content-officers--large .h5 {
+    margin-bottom: 0;
 }
 
 @media (max-width: 767px) {
